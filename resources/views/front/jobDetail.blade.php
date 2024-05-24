@@ -6,6 +6,10 @@
         <img src="{{ asset('job_images/' . $job->image) }}" alt="{{ $job->title }}" class="img-fluid mx-auto d-block" style="width: 50%;">
     </div>
 </section>
+
+   
+
+
 <section class="section-4 bg-2">    
     <div class="container pt-5">
         <div class="row">
@@ -21,6 +25,7 @@
     <div class="container job_details_area">
         <div class="row pb-2">
             <div class="col-md-8">
+                 @include('front.message')
                 <div class="card shadow border-0">
                     <div class="job_details_header">
                         <div class="single_jobs white-bg d-flex justify-content-between">
@@ -73,8 +78,9 @@
                         <div class="pt-3 text-end">
                             @if(Auth::check())
                                 <div>
-                                   <a href="{{route(config('chatify.routes.prefix'))}}" onclick="saveJob({{ $job->id }});" class="btn btn-primary">Message</a> 
-                                   <a href="#" onclick="saveJob({{ $job->id }});" class="btn btn-primary">Save</a>  
+                                   <a href="{{route(config('chatify.routes.prefix'))}}" onclick="" class="btn btn-primary">Message</a> 
+                                   <a href="#" onclick="saveJob({{ $job->id }});" class="btn btn-primary">Save</a> 
+                                   <a href="#" onclick="apply_for_roommate({{ $job->id }});" class="btn btn-primary">Apply</a> 
 
                                 </div>  
                             @else
@@ -131,6 +137,20 @@
 
 @section('customJs')
 <script>
+
+function apply_for_roommate(id){
+    if (confirm("Are you sure you want to apply on this post?")) {
+        $.ajax({
+            url : '{{ route("applyRoommate") }}',
+            type: 'post',
+            data: {id:id},
+            dataType: 'json',
+            success: function(response) {
+                window.location.href = "{{ url()->current() }}";
+            } 
+        });
+    }
+}
     function saveJob(id) {
         $.ajax({
             url: "{{ route('saveJob') }}",

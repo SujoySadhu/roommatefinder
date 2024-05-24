@@ -24,6 +24,7 @@ Route::get('/jobs', [JobsController::class, 'index'])->name('jobs');
 Route::get('/jobs/detail/{id}', [JobsController::class, 'detail'])->name('jobDetail'); 
 
 Route::post('/save-job', [JobsController::class, 'saveJob'])->name('saveJob');
+Route::post('/apply-roommate', [JobsController::class, 'apply_for_roommate'])->name('applyRoommate');
 
 
 

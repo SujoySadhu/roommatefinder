@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Job;
+use App\Models\User;
 use App\Models\JobType;
-use App\Models\SavedJob;   
+use App\Models\SavedJob;  
+use App\Models\RoommateRequest; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -140,5 +142,50 @@ class JobsController extends Controller
             'message' => 'Job saved successfully',
         ]);
     }
+    public function apply_for_roommate(Request $request)
+    {
+        $id = $request->id;
+
+        $job = Job::where('id',$id)->first();
+
+        // If job not found in db
+        if ($job == null) {
+            $message = 'post does not exist.';
+            session()->flash('error',$message);
+            return response()->json([
+                'status' => false,
+                'message' => $message
+            ]);
+        }
+
+        // you can not apply on your own job
+        $roommate_id = $job->user_id;
+
+        if ( $roommate_id == Auth::user()->id) {
+            $message = 'You can not apply on your own job.';
+            session()->flash('error',$message);
+            return response()->json([
+                'status' => false,
+                'message' => $message
+            ]);
+        }
+        $application = new RoommateRequest();
+        $application->request_id = $id;
+        $application->user_id = Auth::user()->id;
+        $application->roommate_id  = $roommate_id ;
+        $application->applied_date = now();
+        $application->save();
+
+        $message = 'You have successfully applied.';
+
+        session()->flash('success',$message);
+
+        return response()->json([
+            'status' => true,
+            'message' => $message
+        ]);
+
+    }
+    
     
 }
