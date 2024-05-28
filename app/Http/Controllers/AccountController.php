@@ -214,7 +214,9 @@ class AccountController extends Controller
             'vacancy' => 'required|integer',
             'location' => 'required|max:50',
             'description' => 'required',
-            'company_name' => 'required',
+            'seekername' => 'required',
+            'seekeremail' => 'required',
+            'seekerphonenumber' => 'required',
             'image' => 'required|image' // Adding validation rule for image
         ];
     
@@ -235,9 +237,9 @@ class AccountController extends Controller
             $job->qualifications = $request->qualifications;
             $job->experience = $request->experience;
             $job->keywords = $request->keywords;
-            $job->company_name = $request->company_name;
-            $job->company_location = $request->company_location;
-            $job->company_website = $request->company_website;
+            $job->company_name = $request->seekername;
+            $job->company_location = $request->seekerphonenumber;
+            $job->company_website = $request->seekeremail;
     
             // Handle image upload
             if ($request->hasFile('image')) {

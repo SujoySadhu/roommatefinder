@@ -2,7 +2,7 @@
 <html class="no-js" lang="en_AU" >
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>CareerVibe | Find Best Jobs</title>
+	<title>ERoomie</title>
 	<meta name="description" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no" />
 	<meta name="HandheldFriendly" content="True" />
@@ -13,12 +13,47 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/newstyle.css') }}" />
 	<!-- Fav Icon -->
 	<link rel="shortcut icon" type="image/x-icon" href="#" />
+	<style>
+		.navbar-custom {
+			background: linear-gradient(90deg, rgba(245, 245, 245, 1) 0%, rgba(245, 245, 245, 0.8) 100%);
+			color: black;
+		}
+		.navbar-custom .navbar-brand,
+		.navbar-custom .nav-link,
+		.navbar-custom .btn {
+			color: black;
+			font-weight: bold;
+		}
+		.navbar-custom .nav-link:hover,
+		.navbar-custom .btn:hover {
+			color: #FFD700;
+		}
+		.navbar-custom .navbar-toggler {
+			border-color: rgba(0, 0, 0, 0.5);
+		}
+		.navbar-custom .navbar-toggler-icon {
+			background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox%3D%220 0 30 30%22 xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cpath stroke%3D%22rgba%280, 0, 0, 0.5%29%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-miterlimit%3D%2210%22 d%3D%22M4 7h22M4 15h22M4 23h22%22/%3E%3C/svg%3E');
+		}
+		.navbar-custom .btn-primary {
+			background-color: #FFD700;
+			border-color: #FFD700;
+			color: #000;
+		}
+		.navbar-custom .btn-outline-primary {
+			border-color: #FFD700;
+			color: #FFD700;
+		}
+		.navbar-custom .btn-outline-primary:hover {
+			background-color: #FFD700;
+			color: #000;
+		}
+	</style>
 </head>
 <body data-instant-intensity="mousedown">
 <header>
-	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3">
+	<nav class="navbar navbar-expand-lg navbar-custom shadow py-3">
 		<div class="container">
-			<a class="navbar-brand" href="{{ route('home') }}">CareerVibe</a>
+			<a class="navbar-brand" href="{{ route('home') }}">ERoomie</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -28,19 +63,19 @@
 						<a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
 					</li>	
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="{{ route('jobs') }}">Find Jobs</a>
+						<a class="nav-link" aria-current="page" href="{{ route('jobs') }}">Search</a>
 					</li>										
 				</ul>		
 				
 				@if (Auth::check())
 				<a class="btn btn-outline-primary me-2" href="{{ route('account.profile') }}" type="submit">Account</a>
-				
+				<a class="btn btn-primary" href="{{ route('account.createJob') }}" type="submit">Post a Job</a>
 				@else
 				<a class="btn btn-outline-primary me-2" href="{{ route('account.login') }}" type="submit">Login</a>
 					
 				@endif
 				
-				<a class="btn btn-primary" href="{{ route('account.createJob') }}" type="submit">Post a Job</a>
+				
 			</div>
 		</div>
 	</nav>

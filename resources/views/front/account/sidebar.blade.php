@@ -21,16 +21,16 @@
                 <a href="{{ route('account.profile') }}">Account Settings</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="{{ route('account.createJob') }}">Post a Job</a>
+                <a href="{{ route('account.createJob') }}">Post for a Roommate</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="{{ route('account.myJobs') }}">My Jobs</a>
+                <a href="{{ route('account.myJobs') }}">My posts</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="job-applied.html">Jobs Applied</a>
+                <a href="job-applied.html">Applied posts</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="{{route('account.savedJobs')}}">Saved Jobs</a>
+                <a href="{{route('account.savedJobs')}}">Saved posts</a>
             </li>  
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{ route('account.logout') }}">Logout</a>
